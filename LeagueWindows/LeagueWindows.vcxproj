@@ -100,8 +100,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\shayl\OneDrive\Desktop\CIS380\2dWindows\LeagueWindows\SDL2-devel-2.0.14-VC\SDL2-2.0.14\include;C:\Users\shayl\OneDrive\Desktop\CIS380\2dWindows\LeagueWindows\SDL2_ttf-2.0.15\include;C:\Users\shayl\OneDrive\Desktop\CIS380\2dWindows\LeagueWindows\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\shayl\OneDrive\Desktop\CIS380\2dWindows\LeagueWindows\SDL2-devel-2.0.14-VC\SDL2-2.0.14\lib\x64;C:\Users\shayl\OneDrive\Desktop\CIS380\2dWindows\LeagueWindows\SDL2_ttf-2.0.15\lib\x64;C:\Users\shayl\OneDrive\Desktop\CIS380\2dWindows\LeagueWindows\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SDL2-devel-2.0.14-VC\SDL2-2.0.14\include;..\SDL2_ttf-2.0.15\include;..\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SDL2-devel-2.0.14-VC\SDL2-2.0.14\lib\x64;..\SDL2_ttf-2.0.15\lib\x64;..\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
