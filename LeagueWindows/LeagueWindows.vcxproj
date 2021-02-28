@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BananaOne.cpp" />
     <ClCompile Include="Monkey.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BananaOne.hpp" />
     <ClInclude Include="Monkey.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="HUD.hpp" />

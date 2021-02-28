@@ -1,5 +1,6 @@
 #include "Engine.hpp"
 #include "Monkey.hpp"
+#include "BananaOne.hpp"
 #include "HUD.hpp"
 #include <SDL.h>
 
@@ -26,6 +27,11 @@ int main(int argc, char** argv){
 	one.addKeyEvent( SDLK_a, b_left );
 	one.addKeyEvent( SDLK_d, b_right );
 	//one.addKeyEvent( SDLK_s, b_down );
+
+	//Add a banana
+	BananaOne* banana = new BananaOne();
+	one.addUpdateable(banana);
+	one.addDrawable(banana);
 
 	// Add the HUD
 	HUD* h = new HUD();
