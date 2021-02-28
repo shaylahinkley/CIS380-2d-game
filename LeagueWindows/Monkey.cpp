@@ -1,8 +1,8 @@
 #include "Engine.hpp"
-#include "Banana.hpp"
+#include "Monkey.hpp"
 
-Banana::Banana(){
-	surface = IMG_Load("../assets/banana.png");
+Monkey::Monkey(){
+	surface = IMG_Load("../assets/monkey1.png");
 	if( surface == NULL ){
 		SDL_Log("Unable to load banana.");
 		exit(1);
@@ -16,17 +16,18 @@ Banana::Banana(){
 	rect->y = 0;
 	rect->w = surface->w;
 	rect->h = surface->h;
+	position.setY(700);
 	velocity.setX(0);
 	velocity.setY(0);
 	velocity.setZ(0);
 }
 
-Banana::~Banana(){
+Monkey::~Monkey(){
 	SDL_DestroyTexture(texture);
 	SDL_FreeSurface(surface);
 }
 
-void Banana::update(double delta){
+void Monkey::update(double delta){
 	// So we stop getting the compiler warning for now.
 	position.setX(position.getX() + velocity.getX() * delta);
 	position.setY(position.getY() + velocity.getY() * delta);
@@ -38,7 +39,7 @@ void Banana::update(double delta){
 	}
 }
 
-void Banana::draw(){
+void Monkey::draw(){
 	SDL_Rect* dst = new SDL_Rect();
 	dst->x = position.getX();
 	dst->y = position.getY();
@@ -47,23 +48,25 @@ void Banana::draw(){
 	SDL_RenderCopy(Engine::getRenderer(), texture, NULL, dst);
 }
 
-void Banana::left(double delta){
+void Monkey::left(double delta){
 	if(velocity.getX() > -200){
 		velocity.setX(velocity.getX() - 10);
 	}
 }
-void Banana::right(double delta){
+void Monkey::right(double delta){
 	if(velocity.getX() < 200){
 		velocity.setX(velocity.getX() + 10);
 	}
 }
-void Banana::up(double delta){
+/*
+void Monkey::up(double delta){
 	if(velocity.getY() > -200 ){
 		velocity.setY(velocity.getY() - 10);
 	}
 }
-void Banana::down(double delta){
+void Monkey::down(double delta){
 	if(velocity.getY() < 200 ){
 		velocity.setY(velocity.getY() + 10);
 	}
 }
+*/

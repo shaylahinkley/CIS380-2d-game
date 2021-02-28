@@ -1,5 +1,5 @@
 #include "Engine.hpp"
-#include "Banana.hpp"
+#include "Monkey.hpp"
 #include "HUD.hpp"
 #include <SDL.h>
 
@@ -14,18 +14,18 @@ int main(int argc, char** argv){
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
 
-	// Make a banana and add to scene. Should update and draw.
-	Banana* b = new Banana();
+	// Make a monkey and add to scene. Should update and draw.
+	Monkey* b = new Monkey();
 	one.addUpdateable(b);
 	one.addDrawable(b);
-	auto b_up = [b](double delta) { b->up(delta); };
-	auto b_down = [b](double delta) { b->down(delta); };
+	//auto b_up = [b](double delta) { b->up(delta); };
+	//auto b_down = [b](double delta) { b->down(delta); };
 	auto b_left = [b](double delta) { b->left(delta); };
 	auto b_right = [b](double delta) { b->right(delta); };
-	one.addKeyEvent( SDLK_w, b_up );
+	//one.addKeyEvent( SDLK_w, b_up );
 	one.addKeyEvent( SDLK_a, b_left );
 	one.addKeyEvent( SDLK_d, b_right );
-	one.addKeyEvent( SDLK_s, b_down );
+	//one.addKeyEvent( SDLK_s, b_down );
 
 	// Add the HUD
 	HUD* h = new HUD();

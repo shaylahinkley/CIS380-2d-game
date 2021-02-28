@@ -21,6 +21,14 @@ Engine::Engine(int _width, int _height){
 	if( Engine::renderer == nullptr ){
 		SDL_Log("Could not create a renderer. %s", SDL_GetError());
 	}
+
+	SDL_Surface *screen = SDL_GetWindowSurface(window);
+	Uint32 black = SDL_MapRGB(screen->format, 0, 255, 0);
+	SDL_FillRect(screen, NULL, black);
+	SDL_UpdateWindowSurface(window);
+
+
+
 	SDL_Log("Initialized. Frame rate set to %f.", frameRate);
 }
 

@@ -4,14 +4,14 @@
 #include <random>
 
 HUD::HUD(){
-	stick = TTF_OpenFont("../assets/stick.ttf", 48);
+	stick = TTF_OpenFont("../assets/stick.ttf", 20);
 	if(stick == NULL){
 		SDL_Log("No font. %s", TTF_GetError());
 	}
 	color.r=0;
 	color.g=0;
 	color.b=0;
-	surface = TTF_RenderText_Solid(stick, "CRAZY BOUNCING BANANA, EPIC!", color); 
+	surface = TTF_RenderText_Solid(stick, "Catch the bananas!", color); 
 	if(surface == NULL){
 		SDL_Log("Can't create text. %s", SDL_GetError());
 	}
@@ -38,7 +38,7 @@ void HUD::update(double delta){
 		color.r = uni(rng);
 		color.b = uni(rng);
 		color.g = uni(rng);
-		surface = TTF_RenderText_Solid(stick, "CRAZY BOUNCING BANANA, EPIC!", color); 
+		surface = TTF_RenderText_Solid(stick, "Catch the bananas!", color); 
 		texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
 
 	}
