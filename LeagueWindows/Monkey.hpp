@@ -5,17 +5,15 @@
 #include <SDL_image.h>
 #include "Interfaces.hpp"
 #include "Utility.hpp"
+#include "Sprite.hpp"
 
-class Monkey : public DUGameObject {
+class Monkey : public Sprite {
 	public:
 		Monkey();
-		~Monkey();
-		void update(double delta);
-		void draw();	
+		void update(double delta);	
 		void left(double delta);
 		void right(double delta);
-		//void up(double delta);
-		//void down(double delta);
+		
 	private:
 		Vector3 velocity;
 

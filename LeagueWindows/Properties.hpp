@@ -3,9 +3,9 @@
 
 #define FPS 30
 
-#define BGR 255
-#define BGG 255
-#define BGB 255
+#define BGR 0
+#define BGG 0
+#define BGB 0
 #define BGA 255
 
 #endif
