@@ -1,7 +1,7 @@
 #include "Engine.hpp"
 #include "Monkey.hpp"
 
-Monkey::Monkey(): Sprite("../assets/monkey.png", 0, 0){
+Monkey::Monkey(): Sprite("../assets/monkey.png"){
 	position.setY(700);
 	velocity.setX(0);
 	velocity.setY(0);

@@ -5,14 +5,24 @@
 #include "Sprite.hpp"
 #include <random>
 
-class BananaOne : public Sprite {
+class Banana : public Sprite {
 	public:
-		BananaOne();
+		Banana();
+		~Banana();
 		void update(double delta);
+		bool isBruised();
+		bool isPeeled();
+
 	private:
 		Vector3 velocity;
 		std::random_device rd;
 		std::mt19937 rng;
 		std::uniform_int_distribution<int> uni;
+		bool bruised;
+		bool peeled;
 
+		SDL_Surface* surf_bruised;
+		SDL_Surface* surf_peeled;
+		SDL_Texture* tex_bruised;
+		SDL_Texture* tex_peeled;
 };

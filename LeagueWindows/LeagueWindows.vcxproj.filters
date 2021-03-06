@@ -39,7 +39,7 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BananaOne.cpp">
+    <ClCompile Include="Banana.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,7 +68,7 @@
     <ClInclude Include="Sprite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BananaOne.hpp">
+    <ClInclude Include="Banana.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

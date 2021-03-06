@@ -1,6 +1,6 @@
 #include "Engine.hpp"
 #include "Monkey.hpp"
-#include "BananaOne.hpp"
+#include "Banana.hpp"
 #include "HUD.hpp"
 #include <SDL.h>
 
@@ -11,35 +11,35 @@ int main(int argc, char** argv){
 	}
 
 	// Create a scene
-	Scene one;
+	Scene sceneOne;
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
 
 	// Make a monkey and add to scene. Should update and draw.
-	Monkey* b = new Monkey();
-	one.addUpdateable(b);
-	one.addDrawable(b);
+	Monkey* monkey = new Monkey();
+	sceneOne.addUpdateable(monkey);
+	sceneOne.addDrawable(monkey);
 	//auto b_up = [b](double delta) { b->up(delta); };
 	//auto b_down = [b](double delta) { b->down(delta); };
-	auto b_left = [b](double delta) { b->left(delta); };
-	auto b_right = [b](double delta) { b->right(delta); };
+	auto monkey_left = [monkey](double delta) { monkey->left(delta); };
+	auto monkey_right = [monkey](double delta) { monkey->right(delta); };
 	//one.addKeyEvent( SDLK_w, b_up );
-	one.addKeyEvent( SDLK_a, b_left );
-	one.addKeyEvent( SDLK_d, b_right );
+	sceneOne.addKeyEvent( SDLK_a, monkey_left );
+	sceneOne.addKeyEvent( SDLK_d, monkey_right );
 	//one.addKeyEvent( SDLK_s, b_down );
 
 	//Add a banana
-	BananaOne* banana = new BananaOne();
-	one.addUpdateable(banana);
-	one.addDrawable(banana);
+	Banana* banana = new Banana();
+	sceneOne.addUpdateable(banana);
+	sceneOne.addDrawable(banana);
 
 	// Add the HUD
 	HUD* h = new HUD();
-	one.addUpdateable(h);
-	one.addDrawable(h);
+	sceneOne.addUpdateable(h);
+	sceneOne.addDrawable(h);
 
 	// Set the scene in the engine
-	engine.setScene(&one);
+	engine.setScene(&sceneOne);
 	
 	// Get the engine running.
 	engine.run();

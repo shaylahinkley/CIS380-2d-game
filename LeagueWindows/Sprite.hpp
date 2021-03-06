@@ -9,8 +9,9 @@
 
 class Sprite : public DUGameObject {
 	public:
-		Sprite(std::string file, int x, int y);
-		Sprite(SDL_Surface* surf,int x, int y);
+		Sprite();
+		Sprite(std::string file);
+		Sprite(SDL_Surface* surf);
 		SDL_Surface* surface;
 		SDL_Texture* texture;
 		~Sprite();
