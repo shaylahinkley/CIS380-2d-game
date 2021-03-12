@@ -65,6 +65,7 @@ void Engine::run(){
 		cumulative += delta;
 		double gameDelta = delta / 1000.0;
 
+		
 		// Get events
 		while(SDL_PollEvent(&event) > 0){
 			if(event.type == SDL_QUIT){
@@ -72,17 +73,15 @@ void Engine::run(){
 			}
 
 			// Check for keyboard events
-			if(event.type == SDL_KEYDOWN || event.type == SDL_KEYUP){
+			if(event.type == SDL_KEYUP || event.type == SDL_KEYDOWN) {//event.type == SDL_KEYUP){
 				for(auto f = currentScene->keyEvents.begin(); f != currentScene->keyEvents.end(); ++f){
 					if(event.key.keysym.sym == (*f).first){
-						(*f).second(gameDelta);
-						//SDL_Log("Dispatched event. %d, %f", delta, gameDelta);
+							(*f).second(gameDelta);
 					}
 				}
 			}
-
 		}
-
+		
 		// Update objects
 		for(std::vector<Updateable*>::iterator it = currentScene->updateables.begin(); it != currentScene->updateables.end(); ++it){
 			(*it)->update(gameDelta);

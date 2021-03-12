@@ -10,23 +10,21 @@ Monkey::Monkey(): Sprite("../assets/monkey.png"){
 
 void Monkey::update(double delta){
 	// So we stop getting the compiler warning for now.
-	position.setX(position.getX() + velocity.getX() * delta);
-	position.setY(position.getY() + velocity.getY() * delta);
-	if(position.getX() > 1024-rect->w || position.getX() < 0){
-		velocity.setX(- velocity.getX());
-	}
-	if(position.getY() > 768-rect->h || position.getY() < 0){
-		velocity.setY(- velocity.getY());
-	}
 }
 
 void Monkey::left(double delta){
-	if(velocity.getX() > -200){
-		velocity.setX(velocity.getX() - 10);
+	if (position.getX() < 0) {
+		position.setX(0);
+	}
+	else {
+		position.setX(position.getX() - 15);
 	}
 }
 void Monkey::right(double delta){
-	if(velocity.getX() < 200){
-		velocity.setX(velocity.getX() + 10);
+	if (position.getX() > 1024 - rect->w) {
+		position.setX(1024);
+	}
+	else {
+		position.setX(position.getX() + 15);
 	}
 }
