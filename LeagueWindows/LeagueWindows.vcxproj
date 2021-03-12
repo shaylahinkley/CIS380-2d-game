@@ -26,6 +26,7 @@
     <ClCompile Include="Interfaces.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Score.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
@@ -37,6 +38,7 @@
     <ClInclude Include="Interfaces.hpp" />
     <ClInclude Include="Properties.hpp" />
     <ClInclude Include="Scene.hpp" />
+    <ClInclude Include="Score.hpp" />
     <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="Utility.hpp" />
   </ItemGroup>

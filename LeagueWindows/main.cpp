@@ -2,6 +2,7 @@
 #include "Monkey.hpp"
 #include "Banana.hpp"
 #include "HUD.hpp"
+#include "Score.hpp"
 #include <SDL.h>
 
 int main(int argc, char** argv){
@@ -37,6 +38,11 @@ int main(int argc, char** argv){
 	HUD* h = new HUD();
 	sceneOne.addUpdateable(h);
 	sceneOne.addDrawable(h);
+
+	//add the Score
+	Score* s = new Score();
+	sceneOne.addUpdateable(s);
+	sceneOne.addDrawable(s);
 
 	// Set the scene in the engine
 	engine.setScene(&sceneOne);
