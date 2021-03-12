@@ -13,6 +13,7 @@ Banana::Banana() : Sprite("../assets/banana.png") {
 	velocity.setZ(0);
 	bruised = false;
 	peeled = false;
+	lastTime = 0;
 
 	/* Load alternate textures (this is is probably inefficient) */
 
@@ -41,7 +42,9 @@ Banana::Banana() : Sprite("../assets/banana.png") {
 	}
 }
 
-Banana::~Banana() { }
+Banana::~Banana() {
+	
+}
 
 void Banana::update(double delta) {
 	position.setY(position.getY() + velocity.getY() * delta);
@@ -68,9 +71,14 @@ void Banana::update(double delta) {
 			surface = surf_peeled;
 			texture = tex_peeled;
 
-			// TODO: integrate a timer for the banana to de-spawn after a certain time
-				//Banana::~Banana();
+			
+			
 		}
+	}
+	//A scuffed "timer?" that does remove the banana after a few(5 or so) seconds
+	lastTime++;
+	if (lastTime > 211) {
+		Banana::~Banana();
 	}
 }
 

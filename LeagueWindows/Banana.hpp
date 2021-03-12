@@ -20,6 +20,7 @@ class Banana : public Sprite {
 		std::uniform_int_distribution<int> uni;
 		bool bruised;
 		bool peeled;
+		unsigned int lastTime;
 
 		SDL_Surface* surf_bruised;
 		SDL_Surface* surf_peeled;
