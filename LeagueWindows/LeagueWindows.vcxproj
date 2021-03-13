@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Banana.cpp" />
+    <ClCompile Include="BananaHandler.cpp" />
     <ClCompile Include="Monkey.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -32,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Banana.hpp" />
+    <ClInclude Include="BananaHandler.hpp" />
     <ClInclude Include="Monkey.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="HUD.hpp" />

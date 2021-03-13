@@ -1,8 +1,8 @@
 #include "Engine.hpp"
 #include "Monkey.hpp"
-#include "Banana.hpp"
 #include "HUD.hpp"
 #include "Score.hpp"
+#include "BananaHandler.hpp"
 #include <SDL.h>
 
 int main(int argc, char** argv){
@@ -29,10 +29,18 @@ int main(int argc, char** argv){
 	sceneOne.addKeyEvent( SDLK_d, monkey_right );
 	//one.addKeyEvent( SDLK_s, b_down );
 
-	//Add a banana
-	Banana* banana = new Banana();
-	sceneOne.addUpdateable(banana);
-	sceneOne.addDrawable(banana);
+	BananaHandler* naner_handler = new BananaHandler(10);
+	sceneOne.addUpdateable(naner_handler);
+	for (int i = 0; i < naner_handler->size(); i++) {
+		// TODO: maybe implement spawn delay here?
+		sceneOne.addUpdateable(naner_handler->at(i));
+		sceneOne.addDrawable(naner_handler->at(i));
+	}
+	/* Bananas should be added through BananaHandler */
+	////Add a banana
+	//Banana* banana = new Banana();
+	//sceneOne.addUpdateable(banana);
+	//sceneOne.addDrawable(banana);
 
 	// Add the HUD
 	HUD* h = new HUD();

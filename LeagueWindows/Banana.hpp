@@ -11,8 +11,11 @@
 class Banana : public Sprite {
 	public:
 		Banana();
+		//Banana(SDL_Surface* surface);
 		~Banana();
 		void update(double delta);
+		void bruise();
+		void peel();
 		bool isBruised();
 		bool isPeeled();
 

@@ -43,6 +43,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Score.cpp">
+    <ClCompile Include="BananaHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,6 +76,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Score.hpp">
+    <ClInclude Include="BananaHandler.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

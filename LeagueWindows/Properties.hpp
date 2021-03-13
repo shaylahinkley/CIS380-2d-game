@@ -1,7 +1,7 @@
 #ifndef     __HPP_PROPERTIES__
 #define     __HPP_PROPERTIES__
 
-#define FPS 30
+#define FPS 60
 
 #define BGR 0
 #define BGG 0
