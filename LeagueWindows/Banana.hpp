@@ -1,3 +1,6 @@
+#ifndef			__HPP__BANANA__
+#define			__HPP__BANANA__
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Interfaces.hpp"
@@ -27,3 +30,5 @@ class Banana : public Sprite {
 		SDL_Texture* tex_bruised;
 		SDL_Texture* tex_peeled;
 };
+
+#endif
