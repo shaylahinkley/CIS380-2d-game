@@ -69,7 +69,10 @@ void Banana::update(double delta) {
 	}
 
 	//A scuffed "timer?" that does remove the banana after a few(5 or so) seconds
-	lastTime++;
+	if (peeled) {
+		lastTime++;
+	}
+
 	if (lastTime > 211) {
 		Banana::~Banana();
 	}
