@@ -1,7 +1,9 @@
 #include "BananaHandler.hpp"
 #include "Banana.hpp"
+#include "Score.hpp"
 
 BananaHandler::BananaHandler(int totalBananas) {
+
 	for (int i = 0; i < totalBananas; i++) 
 		bananas.emplace_back(new Banana());
 	
@@ -17,7 +19,10 @@ BananaHandler::BananaHandler(int totalBananas) {
 BananaHandler::~BananaHandler() { }
 
 void BananaHandler::update(double delta) { 
-	
+	for (int i = 0; i < bananas.size(); i++) {
+		bananas.at(i)->monkeyPositionX(monkeyPosition);
+		bananas.at(i)->setScorePtr(scorePtr);
+	}
 }
 
 Banana* BananaHandler::at(int index) {
@@ -26,4 +31,12 @@ Banana* BananaHandler::at(int index) {
 
 int BananaHandler::size() {
 	return bananas.size();
+}
+
+void BananaHandler::monkeyX(int x) {
+	monkeyPosition = x;
+}
+
+void BananaHandler::setScorePtr(Score* score) {
+	scorePtr = score;
 }

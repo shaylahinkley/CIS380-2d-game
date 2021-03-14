@@ -6,6 +6,7 @@
 #include "Interfaces.hpp"
 #include "Utility.hpp"
 #include "Sprite.hpp"
+#include "Score.hpp"
 #include <random>
 
 class Banana : public Sprite {
@@ -19,6 +20,9 @@ class Banana : public Sprite {
 		bool isBruised();
 		bool isPeeled();
 		void timer(int time);
+		void monkeyPositionX(int x);
+		void monkeyPositionY(int y);
+		void setScorePtr(Score* score);
 
 	private:
 		Vector3 velocity;
@@ -29,6 +33,9 @@ class Banana : public Sprite {
 		bool peeled;
 		unsigned int lastTime;
 		int timeout;
+		int monkeyX;
+		int monkeyY = 695;
+		Score* scorePtr;
 
 		SDL_Surface* surf_bruised;
 		SDL_Surface* surf_peeled;

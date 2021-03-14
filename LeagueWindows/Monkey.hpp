@@ -6,6 +6,7 @@
 #include "Interfaces.hpp"
 #include "Utility.hpp"
 #include "Sprite.hpp"
+#include "BananaHandler.hpp"
 
 class Monkey : public Sprite {
 	public:
@@ -15,11 +16,13 @@ class Monkey : public Sprite {
 		void right(double delta);
 		void slowdown(double delta);
 		bool isIdle();
+		void nanerHandler(BananaHandler* n);
 		
 	private:
 		Vector3 velocity;
 		int speed;
 		bool idle;
+		BananaHandler* handle;
 };
 
 #endif

@@ -1,5 +1,7 @@
 #include "Engine.hpp"
 #include "Monkey.hpp"
+#include "Passer.hpp"
+#include "BananaHandler.hpp"
 
 Monkey::Monkey(): Sprite("../assets/monkey.png"){
 	position.setY(700);
@@ -10,7 +12,7 @@ Monkey::Monkey(): Sprite("../assets/monkey.png"){
 	idle = true;
 }
 
-void Monkey::update(double delta){
+void Monkey::update(double delta) {
 	position.setX(position.getX() + velocity.getX() * delta);
 	position.setY(position.getY() + velocity.getY() * delta);
 	if (position.getX() > 1024 - rect->w)
@@ -20,11 +22,18 @@ void Monkey::update(double delta){
 
 	if (idle)
 		velocity.setX(velocity.getX() - (velocity.getX() / 8));
+
+	handle->monkeyX(position.getX());
+}
+
+void Monkey::nanerHandler(BananaHandler* n) {
+	handle = n;
 }
 
 void Monkey::left(double delta){
 	idle = false;
 	velocity.setX(-speed);
+
 }
 void Monkey::right(double delta){
 	idle = false;
@@ -33,7 +42,7 @@ void Monkey::right(double delta){
 
 void Monkey::slowdown(double delta) {
 	idle = true;
-	//velocity.setX(0);
+	velocity.setX(0);
 }
 
 bool Monkey::isIdle() {

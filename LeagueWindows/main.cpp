@@ -13,6 +13,7 @@ int main(int argc, char** argv){
 
 	// Create a scene
 	Scene sceneOne;
+
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
 	Engine* ePtr = &engine;
@@ -51,6 +52,9 @@ int main(int argc, char** argv){
 		sceneOne.addDrawable(naner_handler->at(i));
 	}
 
+	//use pointer to send position of monkey to each banana to handle collision
+	monkey->nanerHandler(naner_handler);
+
 	// Add the HUD
 	HUD* h = new HUD();
 	sceneOne.addUpdateable(h);
@@ -60,6 +64,9 @@ int main(int argc, char** argv){
 	Score* s = new Score();
 	sceneOne.addUpdateable(s);
 	sceneOne.addDrawable(s);
+
+	//pass pointer to score to the banana handler
+	naner_handler->setScorePtr(s);
 
 	// Set the scene in the engine
 	engine.setScene(&sceneOne);

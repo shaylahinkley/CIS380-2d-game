@@ -1,5 +1,7 @@
 #include "Engine.hpp"
 #include "Banana.hpp"
+#include "Monkey.hpp"
+#include "Score.hpp"
 #include <random>
 #include <stdlib.h>
 
@@ -41,7 +43,13 @@ Banana::Banana() : Sprite("../assets/banana.png") {
 	}
 }
 
-Banana::~Banana() { }
+Banana::~Banana() { 
+}
+
+
+void Banana::monkeyPositionX(int x) {
+	monkeyX = x;
+}
 
 void Banana::update(double delta) {
 
@@ -78,6 +86,20 @@ void Banana::update(double delta) {
 		if (peeled && lastTime > 211) {
 			Banana::~Banana();
 		}
+
+		//catch the banana and set the score
+		if ((monkeyX - position.getX()) > -80 && (monkeyX - position.getX()) < 5 && (monkeyY - position.getY()) > -15 && (monkeyY- position.getY()) < 10) {
+			if (isBruised()) {
+				scorePtr->setScore(scorePtr->getScore() + 5);
+			}
+			else if (isPeeled()) {
+				
+			}
+			else {
+				scorePtr->setScore(scorePtr->getScore() + 10);
+			}
+			Banana::~Banana();
+		}
 	}
 }
 
@@ -106,4 +128,8 @@ bool Banana::isPeeled() {
 
 void Banana::timer(int time) {
 	timeout = time;
+}
+
+void Banana::setScorePtr(Score* score) {
+	scorePtr = score;
 }

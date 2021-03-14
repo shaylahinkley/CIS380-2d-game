@@ -13,8 +13,10 @@ public:
 	Score();
 	~Score();
 	void setScore(int n);
+	int getScore();
 	void update(double delta);
 	void draw();
+
 private:
 	TTF_Font* stick;
 	SDL_Color color;

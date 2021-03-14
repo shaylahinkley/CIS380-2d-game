@@ -19,5 +19,7 @@ class Sprite : public DUGameObject {
 		void draw();
 
 	private:
+
+	friend class Collision;
 };
 #endif

@@ -37,6 +37,10 @@ void Score::setScore(int n) {
 	scoreVar = n;
 }
 
+int Score::getScore() {
+	return scoreVar;
+}
+
 Score::~Score() {
 	SDL_DestroyTexture(texture);
 	SDL_FreeSurface(surface);
