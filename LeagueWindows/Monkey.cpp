@@ -24,14 +24,11 @@ void Monkey::update(double delta){
 
 void Monkey::left(double delta){
 	idle = false;
-	if (abs(velocity.getX()) < speed)
-		velocity.setX(velocity.getX() - 50);
-		//velocity.setX(-speed);
+	velocity.setX(-speed);
 }
 void Monkey::right(double delta){
 	idle = false;
-	if (abs(velocity.getX()) < speed)
-		velocity.setX(speed);
+	velocity.setX(speed);
 }
 
 void Monkey::slowdown(double delta) {
