@@ -7,7 +7,7 @@ Banana::Banana() : Sprite("../assets/banana.png") {
 	rng = std::mt19937(rd());
 	uni = std::uniform_int_distribution<int>(32, 992);
 	position.setX(uni(rng));
-	position.setY(0);
+	position.setY(-50);
 	velocity.setX(std::uniform_int_distribution<int>(-200, 200)(rng));
 	velocity.setY(0);
 	velocity.setZ(0);
@@ -45,36 +45,38 @@ Banana::~Banana() { }
 
 void Banana::update(double delta) {
 
-	position.setY(position.getY() + velocity.getY() * delta);
-	position.setX(position.getX() + velocity.getX() * delta);
+	if (SDL_TICKS_PASSED(SDL_GetTicks(), timeout)) {
+		position.setY(position.getY() + velocity.getY() * delta);
+		position.setX(position.getX() + velocity.getX() * delta);
 
-	velocity.setY(velocity.getY() + 200 * delta); // gravity
+		velocity.setY(velocity.getY() + 200 * delta); // gravity
 
-	if (position.getX() > 1024 - rect->w || position.getX() < 0) {
-		velocity.setX(-velocity.getX());
-	}
-	if (position.getY() > 768 - rect->h) {
-		if (!bruised && !peeled) {
-			velocity.setY(-(velocity.getY() - (velocity.getY() / 2)));
-
-			bruise();
+		if (position.getX() > 1024 - rect->w || position.getX() < 0) {
+			velocity.setX(-velocity.getX());
 		}
-		else {
-			position.setY(768 - rect->h);
-			velocity.setX(0);
-			velocity.setY(0);
+		if (position.getY() > 768 - rect->h) {
+			if (!bruised && !peeled) {
+				velocity.setY(-(velocity.getY() - (velocity.getY() / 2)));
 
-			peel();
+				bruise();
+			}
+			else {
+				position.setY(768 - rect->h);
+				velocity.setX(0);
+				velocity.setY(0);
+
+				peel();
+			}
 		}
-	}
 
-	//A scuffed "timer?" that does remove the banana after a few(5 or so) seconds
-	if (peeled) {
-		lastTime++;
-	}
+		//A scuffed "timer?" that does remove the banana after a few(5 or so) seconds
+		if (peeled) {
+			lastTime++;
+		}
 
-	if (lastTime > 211) {
-		Banana::~Banana();
+		if (lastTime > 211) {
+			Banana::~Banana();
+		}
 	}
 }
 
@@ -96,4 +98,8 @@ bool Banana::isBruised() {
 
 bool Banana::isPeeled() {
 	return peeled;
+}
+
+void Banana::timer(int time) {
+	timeout = time;
 }

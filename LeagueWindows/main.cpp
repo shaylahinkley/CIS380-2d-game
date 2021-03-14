@@ -29,7 +29,7 @@ int main(int argc, char** argv){
 	sceneOne.addKeyEvent( SDLK_d, monkey_right );
 	//one.addKeyEvent( SDLK_s, b_down );
 
-	BananaHandler* naner_handler = new BananaHandler(10);
+	BananaHandler* naner_handler = new BananaHandler(100);
 	sceneOne.addUpdateable(naner_handler);
 	for (int i = 0; i < naner_handler->size(); i++) {
 		// TODO: maybe implement spawn delay here?

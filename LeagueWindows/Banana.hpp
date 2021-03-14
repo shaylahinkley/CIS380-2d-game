@@ -18,6 +18,7 @@ class Banana : public Sprite {
 		void peel();
 		bool isBruised();
 		bool isPeeled();
+		void timer(int time);
 
 	private:
 		Vector3 velocity;
@@ -27,6 +28,7 @@ class Banana : public Sprite {
 		bool bruised;
 		bool peeled;
 		unsigned int lastTime;
+		int timeout;
 
 		SDL_Surface* surf_bruised;
 		SDL_Surface* surf_peeled;

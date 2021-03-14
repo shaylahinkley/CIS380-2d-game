@@ -11,6 +11,7 @@ class BananaHandler : public UGameObject {
 		void update(double delta);
 		int size();
 		Banana* at(int index);
+		float timer;
 
 	private:
 		std::vector<Banana*> bananas;
