@@ -8,7 +8,7 @@ BananaHandler::BananaHandler(int totalBananas) {
 	int countTime = 0;
 	for (int i = 0; i < bananas.size(); i++) {
 		bananas.at(i)->timer(countTime);
-		countTime = countTime + 2000;
+		countTime = (countTime + 2000) - (i * (i/2));
 	}
 
 	bItr = bananas.begin();
