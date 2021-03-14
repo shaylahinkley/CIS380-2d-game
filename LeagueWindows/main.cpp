@@ -15,32 +15,41 @@ int main(int argc, char** argv){
 	Scene sceneOne;
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
+	Engine* ePtr = &engine;
 
 	// Make a monkey and add to scene. Should update and draw.
 	Monkey* monkey = new Monkey();
 	sceneOne.addUpdateable(monkey);
 	sceneOne.addDrawable(monkey);
-	//auto b_up = [b](double delta) { b->up(delta); };
-	//auto b_down = [b](double delta) { b->down(delta); };
-	auto monkey_left = [monkey](double delta) { monkey->left(delta); };
-	auto monkey_right = [monkey](double delta) { monkey->right(delta); };
-	//one.addKeyEvent( SDLK_w, b_up );
+	auto monkey_left = [monkey, ePtr](double delta) {
+		switch (ePtr->getEvent().type) {
+			case SDL_KEYDOWN:
+				monkey->left(delta);
+				break;
+			case SDL_KEYUP:
+				monkey->slowdown(delta);
+				break;
+		}
+	};
+	auto monkey_right = [monkey, ePtr](double delta) {
+		switch (ePtr->getEvent().type) {
+			case SDL_KEYDOWN:
+				monkey->right(delta);
+				break;
+			case SDL_KEYUP:
+				monkey->slowdown(delta);
+				break;
+		}
+	};
 	sceneOne.addKeyEvent( SDLK_a, monkey_left );
 	sceneOne.addKeyEvent( SDLK_d, monkey_right );
-	//one.addKeyEvent( SDLK_s, b_down );
 
 	BananaHandler* naner_handler = new BananaHandler(100);
 	sceneOne.addUpdateable(naner_handler);
 	for (int i = 0; i < naner_handler->size(); i++) {
-		// TODO: maybe implement spawn delay here?
 		sceneOne.addUpdateable(naner_handler->at(i));
 		sceneOne.addDrawable(naner_handler->at(i));
 	}
-	/* Bananas should be added through BananaHandler */
-	////Add a banana
-	//Banana* banana = new Banana();
-	//sceneOne.addUpdateable(banana);
-	//sceneOne.addDrawable(banana);
 
 	// Add the HUD
 	HUD* h = new HUD();

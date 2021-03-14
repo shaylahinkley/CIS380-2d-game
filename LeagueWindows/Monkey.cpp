@@ -6,25 +6,39 @@ Monkey::Monkey(): Sprite("../assets/monkey.png"){
 	velocity.setX(0);
 	velocity.setY(0);
 	velocity.setZ(0);
+	speed = 500;
+	idle = true;
 }
 
 void Monkey::update(double delta){
-	// So we stop getting the compiler warning for now.
+	position.setX(position.getX() + velocity.getX() * delta);
+	position.setY(position.getY() + velocity.getY() * delta);
+	if (position.getX() > 1024 - rect->w)
+		position.setX(1024 - rect-> w);
+	else if (position.getX() < 0)
+		position.setX(0);
+
+	if (idle)
+		velocity.setX(velocity.getX() - (velocity.getX() / 8));
 }
 
 void Monkey::left(double delta){
-	if (position.getX() < 0) {
-		position.setX(0);
-	}
-	else {
-		position.setX(position.getX() - 15);
-	}
+	idle = false;
+	if (abs(velocity.getX()) < speed)
+		velocity.setX(velocity.getX() - 50);
+		//velocity.setX(-speed);
 }
 void Monkey::right(double delta){
-	if (position.getX() > 1024 - rect->w) {
-		position.setX(1024);
-	}
-	else {
-		position.setX(position.getX() + 15);
-	}
+	idle = false;
+	if (abs(velocity.getX()) < speed)
+		velocity.setX(speed);
+}
+
+void Monkey::slowdown(double delta) {
+	idle = true;
+	//velocity.setX(0);
+}
+
+bool Monkey::isIdle() {
+	return idle;
 }

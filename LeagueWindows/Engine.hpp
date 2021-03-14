@@ -13,6 +13,7 @@ class Engine {
 		void setFrameRate(double _frameRate);
 		void setScene(Scene* scene);
 		static SDL_Renderer* getRenderer();
+		SDL_Event getEvent();
 	private:
 		unsigned long current;
 		unsigned long last;
@@ -24,6 +25,7 @@ class Engine {
 		Scene* currentScene;
 		int cumulative;
 		int framecount;
+		SDL_Event event;
 };
 
 #endif

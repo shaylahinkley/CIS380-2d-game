@@ -13,10 +13,13 @@ class Monkey : public Sprite {
 		void update(double delta);	
 		void left(double delta);
 		void right(double delta);
+		void slowdown(double delta);
+		bool isIdle();
 		
 	private:
 		Vector3 velocity;
-
+		int speed;
+		bool idle;
 };
 
 #endif

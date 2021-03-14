@@ -42,7 +42,6 @@ void Engine::run(){
 		return;
 	}
 	bool quit = false;
-	SDL_Event event;
 	last = SDL_GetTicks();
 	cumulative = 0;
 	while(!quit){
@@ -73,7 +72,7 @@ void Engine::run(){
 			}
 
 			// Check for keyboard events
-			if(event.type == SDL_KEYUP || event.type == SDL_KEYDOWN) {//event.type == SDL_KEYUP){
+			if(event.type == SDL_KEYUP || event.type == SDL_KEYDOWN) {
 				for(auto f = currentScene->keyEvents.begin(); f != currentScene->keyEvents.end(); ++f){
 					if(event.key.keysym.sym == (*f).first){
 							(*f).second(gameDelta);
@@ -109,4 +108,8 @@ void Engine::setScene(Scene* scene){
 
 SDL_Renderer* Engine::getRenderer(){
 	return Engine::renderer;
+}
+
+SDL_Event Engine::getEvent() {
+	return event;
 }
