@@ -49,18 +49,19 @@ void Banana::update(double delta) {
 		position.setY(position.getY() + velocity.getY() * delta);
 		position.setX(position.getX() + velocity.getX() * delta);
 
-		velocity.setY(velocity.getY() + 200 * delta); // gravity
+		if (!peeled)
+			velocity.setY(velocity.getY() + 200 * delta); // gravity
 
 		if (position.getX() > 1024 - rect->w || position.getX() < 0) {
 			velocity.setX(-velocity.getX());
 		}
 		if (position.getY() > 768 - rect->h) {
 			if (!bruised && !peeled) {
-				velocity.setY(-(velocity.getY() - (velocity.getY() / 2)));
+				velocity.setY(-(velocity.getY() - (velocity.getY() / 4)));
 
 				bruise();
 			}
-			else {
+			if (bruised && lastTime > 10) {
 				position.setY(768 - rect->h);
 				velocity.setX(0);
 				velocity.setY(0);
@@ -70,23 +71,26 @@ void Banana::update(double delta) {
 		}
 
 		//A scuffed "timer?" that does remove the banana after a few(5 or so) seconds
-		if (peeled) {
+		if (peeled || bruised) {
 			lastTime++;
 		}
 
-		if (lastTime > 211) {
+		if (peeled && lastTime > 211) {
 			Banana::~Banana();
 		}
 	}
 }
 
 void Banana::bruise() {
+	lastTime = 0;
 	bruised = true;
 	surface = surf_bruised;
 	texture = tex_bruised;
 }
 
 void Banana::peel() {
+	lastTime = 0;
+	bruised = false;
 	peeled = true;
 	surface = surf_peeled;
 	texture = tex_peeled;
