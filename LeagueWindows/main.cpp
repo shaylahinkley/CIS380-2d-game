@@ -21,6 +21,8 @@ int main(int argc, char** argv){
 	Scene sceneOne;
 
 	//audio stuff
+
+	sceneOne.addDrawable(new Sprite("../assets/background.png"));
 	
 	// Make a monkey and add to scene. Should update and draw.
 	Monkey* monkey = new Monkey();
@@ -71,6 +73,7 @@ int main(int argc, char** argv){
 
 	//pass pointer to score to the banana handler
 	naner_handler->setScorePtr(s);
+	monkey->setScorePtr(s);
 
 	// Set the scene in the engine
 	engine.setScene(&sceneOne);

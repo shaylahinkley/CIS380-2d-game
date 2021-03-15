@@ -17,12 +17,23 @@ class Monkey : public Sprite {
 		void slowdown(double delta);
 		bool isIdle();
 		void nanerHandler(BananaHandler* n);
+		void setScorePtr(Score* score);
 		
 	private:
 		Vector3 velocity;
 		int speed;
 		bool idle;
 		BananaHandler* handle;
+		Score* scorePtr;
+
+		SDL_Surface* surf_catch1;
+		SDL_Surface* surf_catch2;
+		SDL_Surface* surf_catch3;
+		SDL_Surface* surf_catch4;
+		SDL_Texture* tex_catch1;
+		SDL_Texture* tex_catch2;
+		SDL_Texture* tex_catch3;
+		SDL_Texture* tex_catch4;
 };
 
 #endif
