@@ -11,13 +11,17 @@ int main(int argc, char** argv){
 		SDL_Log("%d = %s", i, argv[i]);
 	}
 
-	// Create a scene
-	Scene sceneOne;
+	
 
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
 	Engine* ePtr = &engine;
 
+	// Create a scene
+	Scene sceneOne;
+
+	//audio stuff
+	
 	// Make a monkey and add to scene. Should update and draw.
 	Monkey* monkey = new Monkey();
 	sceneOne.addUpdateable(monkey);
