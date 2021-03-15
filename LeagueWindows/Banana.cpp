@@ -87,8 +87,25 @@ void Banana::update(double delta) {
 			Banana::~Banana();
 		}
 
-		//catch the banana and set the score
+		//catch the banana and set the score and make a noise
 		if ((monkeyX - position.getX()) > -80 && (monkeyX - position.getX()) < 5 && (monkeyY - position.getY()) > -15 && (monkeyY- position.getY()) < 10) {
+
+			int i, count = SDL_GetNumAudioDevices(0);
+			if (count < 1) {
+				SDL_Log("Audio error. %s", SDL_GetError());
+			}
+			for (i = 0; i < count; ++i) {
+				SDL_Log("Audio device %d: %s", i, SDL_GetAudioDeviceName(i, 0));
+			}
+			SDL_AudioSpec wavSpec;
+			Uint32 length;
+			Uint8* buffer;
+			SDL_LoadWAV("../assets/hit.wav", &wavSpec, &buffer, &length);
+			SDL_AudioDeviceID device = SDL_OpenAudioDevice(NULL, 0, &wavSpec, NULL, 0);
+			int success = SDL_QueueAudio(device, buffer, length);
+			SDL_Log("Audio success: %d %s", success, SDL_GetError());
+			SDL_PauseAudioDevice(device, 0);
+
 			if (isBruised()) {
 				scorePtr->setScore(scorePtr->getScore() + 5);
 			}
